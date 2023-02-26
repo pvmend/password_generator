@@ -1,7 +1,8 @@
 // Assignment Code
+
 var generateBtn = document.querySelector("#generate");
 // declaring global variables 
-// need to seperate string in array using splice
+
 const special_char = "!@#$^&%*()+=-[]{}|:<>?,.";
 const lowercase_abc = 'abcdefghijklmnopqrstuvwxyz';
 const numbers = '0123456789';
@@ -11,39 +12,74 @@ var password_upper;
 var password_lower;
 var password_special;
 var password_numbers;
-// spliced into multiple arrays
-var lower_array = lowercase_abc.split('');
-var upper_array = uppercase_abc.split('');
-var number_array = numbers.split('');
-var special_array = special_char.split('');
-console.log(special_array);
+var possibleChar;
 
+
+
+// get user input and what the user wants for their password
+// raises an alert if length is not a number
+// also raises an alert if length is less than 8 or greater than 128
 
 function user_input(){
   password_length  = prompt("enter a number between 8 and 128");
-  password_upper = prompt('do you want uppercase letters? ');
-  password_lower = prompt('do you want lowercase letters? ');
-  password_special = prompt('do you want special characters? ');
-  password_numbers = prompt('do you want numbers in your password?');
-  console.log(password_length);
+  if (isNaN(password_length)){
+    alert("please enter a number");
+    return false;
+  }
+  if (password_length < 8){
+  alert('length must be at least 8 characters');
+  return false;
 }
-function generatePassword(){
-  new_password = [];
-  if (password_upper == true){
-    new_password.push(upper_array);
-  }
-  if (password_lower == true){
-    new_password.push(lower_array);
-  }
-  if (password_special == true){
-    new_password.push(special_array);
-  }
-  if (password_numbers == true){
-    new_password.push(number_array);
-  }
-  
+if (password_length > 128){
+  alert('length must be less than 128');
+  return false;
 }
 
+  password_upper = confirm('do you want uppercase letters? ');
+  password_lower = confirm('do you want lowercase letters? ');
+  password_special = confirm('do you want special characters? ');
+  password_numbers = confirm('do you want numbers in your password?');
+
+
+  return true;
+  }
+
+// 
+
+function generatePassword(){
+  
+  possibleChar = '';
+  var new_password_char = '';
+
+  if (password_upper == true){
+    
+    possibleChar += uppercase_abc;
+  }
+  
+  if (password_lower == true){
+    
+    possibleChar += lowercase_abc;
+  }
+  
+  if (password_special == true){
+    
+    possibleChar += special_char;
+  }
+  
+  if (password_numbers == true){
+    
+    possibleChar += numbers;
+  }
+  // iterate over the new string 
+  for (i = 0; i < password_length; i++){
+    
+    new_password_char += (possibleChar[Math.floor(Math.random() * possibleChar.length)]);
+    console.log(new_password_char);
+   
+}
+  
+return new_password_char;
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -53,41 +89,19 @@ function writePassword() {
   passwordText.value = password;
 
 }
-function generatePassword(){ 
-  var password = '';
-  
-
-}
 
 
-function password_lowercase(){
-  password = password.toLowerCase();
-  return;
-}
-
-function password_uppercase(){
-  password = password.toUpperCase();
-  return;
-}
-
-
-
-// if (password.length() < 8){
-//   prompt('length must be at least 8 characters');
-// }
-// if (password.length() > 128){
-//   prompt('length must be less than 128');
-// }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", function(){
+  
+  if (user_input()){
+    writePassword();
+  }
+  
+});
 
 
 
 
 
-
-// WHEN prompted for the length of the password
-// THEN I choose a length of at least 8 characters and no more than 128 characters
-// WHEN asked for character types to include in the password
-// THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
