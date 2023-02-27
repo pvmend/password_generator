@@ -98,6 +98,7 @@ function writePassword() {
 
 
 // Add event listener to generate button
+// every click prompts the user for questions and generates a new password
 generateBtn.addEventListener("click", function(){
   
   if (user_input()){
