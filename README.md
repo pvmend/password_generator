@@ -1,6 +1,16 @@
-# 03 JavaScript: Password Generator
+# Password Generator
 
+https://pvmend.github.io/password_generator/
 
+## Description 
+
+Was tasked with writing Javascript that would generate a random password after 
+getting user input about what characters they wanted in their password. 
+I learned about how functions are used to call upon and executed. I learned and used random and for loops to generate a password and if statements to check if a requirements were met to execute the next action. 
+
+## Installation 
+
+Created a webpage through Github. (See link above). 
 
 ## Mock-Up
 
@@ -16,7 +26,7 @@ Paul Mendoza - https://github.com/pvmend
 
 MIT License
 
-Copyright (c) 2023 Paul Mendoza
+Copyright (c) 2023 Paul Mendoza  
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -73,7 +73,7 @@ function generatePassword(){
   
   if (password_numbers == true){
     
-    possibleChar += numbers;
+    possibleChar += numbers; 
   }
   // iterate over the new string $possibleChar and then adds randoms characters to $new_password_char 
   for (i = 0; i < password_length; i++){
